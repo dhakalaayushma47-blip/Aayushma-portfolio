@@ -1,0 +1,527 @@
+import { useEffect, useState } from "react";
+import "./App.css";
+
+function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
+  return (
+    <div className="portfolio">
+      <nav className="navbar">
+        <a className="logo" href="#home">
+          AD.
+        </a>
+
+        <div className="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <main>
+        {/* HERO */}
+        <section className="hero" id="home">
+          <div className="hero-content">
+            <p className="eyebrow">AI & SOFTWARE DEVELOPER</p>
+
+            <h1>
+              I build intelligent
+              <span> software.</span>
+            </h1>
+
+            <p className="hero-description">
+              I'm Aayushma Dhakal, an emerging AI & software developer focused
+              on turning real-world problems into intelligent, practical and
+              scalable digital products.
+            </p>
+
+            <div className="hero-buttons">
+              <a href="#projects" className="button primary">
+                View my work
+              </a>
+
+              <a href="#contact" className="button secondary">
+                Let's connect
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-side">
+            <div className="status">
+              <span></span>
+              Available for opportunities
+            </div>
+
+            <p className="hero-number">01</p>
+          </div>
+        </section>
+
+        {/* WHAT I BRING */}
+        <section className="section capabilities">
+          <p className="section-label">01 — WHAT I BRING</p>
+
+          <div className="capabilities-intro">
+            <h2>
+              From ideas to
+              <span> intelligent products.</span>
+            </h2>
+
+            <p>
+              I combine artificial intelligence, software development and
+              problem-solving to build technology that is useful beyond the
+              classroom.
+            </p>
+          </div>
+
+          <div className="capabilities-grid">
+            <article className="capability">
+              <span className="capability-number">01</span>
+
+              <h3>AI & Machine Learning</h3>
+
+              <p>
+                Building predictive models and exploring practical AI
+                applications that turn data into useful insights.
+              </p>
+
+              <div className="capability-tags">
+                <span>Python</span>
+                <span>Machine Learning</span>
+                <span>Data</span>
+              </div>
+            </article>
+
+            <article className="capability">
+              <span className="capability-number">02</span>
+
+              <h3>Software Engineering</h3>
+
+              <p>
+                Developing practical applications across frontend, backend,
+                databases and software systems.
+              </p>
+
+              <div className="capability-tags">
+                <span>React</span>
+                <span>Python</span>
+                <span>SQL</span>
+              </div>
+            </article>
+
+            <article className="capability">
+              <span className="capability-number">03</span>
+
+              <h3>Problem Solving</h3>
+
+              <p>
+                Breaking down real-world problems and turning them into
+                structured, usable and scalable technology solutions.
+              </p>
+
+              <div className="capability-tags">
+                <span>Analysis</span>
+                <span>Systems</span>
+                <span>Innovation</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        {/* ABOUT */}
+        <section className="section about" id="about">
+          <p className="section-label">02 — ABOUT</p>
+
+          <div className="section-grid">
+            <h2>
+              Technology with a
+              <span> purpose.</span>
+            </h2>
+
+            <div>
+              <p>
+                I'm currently pursuing a BSc (Hons) in Artificial Intelligence
+                and developing my skills across software engineering, machine
+                learning and full-stack development.
+              </p>
+
+              <p>
+                I enjoy turning real-world problems into practical software —
+                from business systems and analytics platforms to
+                machine-learning applications.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* PROJECTS */}
+    {/* PROJECTS */}
+    <section className="section projects" id="projects">
+      <p className="section-label">03 — SELECTED WORK</p>
+
+      <p className="projects-intro">
+        A selection of software, AI and business-focused projects.
+        Select a project to explore the details.
+      </p>
+
+      <div className="project-list">
+        <button
+          type="button"
+          className="project project-card"
+          onClick={() =>
+            setSelectedProject({
+              number: "01",
+              title: "InvoiceX",
+              category: "AI · SOFTWARE · BUSINESS",
+              description:
+                "An enterprise retail and strategic inventory system designed to modernize billing, inventory management and business analytics.",
+              details:
+                "A team-based final-year system development project created around the needs of retail businesses. The planned system brings billing, inventory management and sales insights into a more connected workflow.",
+              role: "Mobile App Developer & AI Specialist",
+              tags: ["Python", "AI", "Analytics", "Inventory", "Software"],
+              status: "In development",
+            })
+          }
+        >
+          <span className="project-number">01</span>
+          <span className="project-info">
+            <span className="project-category">AI · SOFTWARE · BUSINESS</span>
+            <span className="project-title">InvoiceX</span>
+            <span className="project-description">
+              An enterprise retail and strategic inventory system designed
+              to modernize billing, inventory management and business
+              analytics.
+            </span>
+            <span className="tags">
+              <span>Python</span>
+              <span>AI</span>
+              <span>Analytics</span>
+              <span>Web</span>
+            </span>
+            <span className="project-open">EXPLORE PROJECT ↗</span>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className="project project-card"
+          onClick={() =>
+            setSelectedProject({
+              number: "02",
+              title: "World Hotels",
+              category: "FULL-STACK DEVELOPMENT",
+              description:
+                "A hotel booking platform built with a Python backend, database integration and a web interface.",
+              details:
+                "A web development assessment using Flask, Python and MySQL to explore hotel booking workflows, server-side logic and database-backed functionality.",
+              role: "Student Developer",
+              tags: ["Flask", "Python", "MySQL", "JavaScript", "HTML/CSS"],
+              status: "Academic project",
+            })
+          }
+        >
+          <span className="project-number">02</span>
+          <span className="project-info">
+            <span className="project-category">FULL-STACK DEVELOPMENT</span>
+            <span className="project-title">World Hotels</span>
+            <span className="project-description">
+              A hotel booking platform built with a Python backend,
+              database integration and a responsive web interface.
+            </span>
+            <span className="tags">
+              <span>Flask</span>
+              <span>Python</span>
+              <span>MySQL</span>
+              <span>JavaScript</span>
+            </span>
+            <span className="project-open">EXPLORE PROJECT ↗</span>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className="project project-card"
+          onClick={() =>
+            setSelectedProject({
+              number: "03",
+              title: "Khushi Pharma & Clinic",
+              category: "REAL-WORLD BUSINESS · WEB DEVELOPMENT",
+              description:
+                "A professional digital presence being developed for a pharmaceutical and healthcare business.",
+              details:
+                "A real-world website project for a family pharmaceutical and clinic business. The goal is to present its services and offerings through a modern, clear and user-friendly digital experience.",
+              role: "Website Developer",
+              tags: ["Web Development", "UI/UX", "Healthcare", "Business"],
+              status: "In development",
+            })
+          }
+        >
+          <span className="project-number">03</span>
+          <span className="project-info">
+            <span className="project-category">
+              REAL-WORLD BUSINESS · WEB DEVELOPMENT
+            </span>
+            <span className="project-title">KHUSHI PHARMA AND CLINIC</span>
+            <span className="project-description">
+              A modern website project for a real pharmaceutical and
+              healthcare business, focused on its services and digital
+              presence.
+            </span>
+            <span className="tags">
+              <span>Web Development</span>
+              <span>UI/UX</span>
+              <span>Healthcare</span>
+              <span>Business</span>
+            </span>
+            <span className="project-open">EXPLORE PROJECT ↗</span>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className="project project-card"
+          onClick={() =>
+            setSelectedProject({
+              number: "04",
+              title: "Diabetes Prediction",
+              category: "MACHINE LEARNING",
+              description:
+                "A machine-learning classification project exploring diabetes prediction using support vector machines.",
+              details:
+                "An academic machine-learning project using a diabetes dataset to train and evaluate an SVM classifier. The work explores model performance and confusion-matrix-based evaluation.",
+              role: "Machine Learning Student",
+              tags: ["Python", "Scikit-learn", "SVM", "Classification"],
+              status: "Academic project",
+            })
+          }
+        >
+          <span className="project-number">04</span>
+          <span className="project-info">
+            <span className="project-category">MACHINE LEARNING</span>
+            <span className="project-title">Diabetes Prediction</span>
+            <span className="project-description">
+              A machine-learning classification project exploring diabetes
+              prediction and model evaluation.
+            </span>
+            <span className="tags">
+              <span>Python</span>
+              <span>Scikit-learn</span>
+              <span>SVM</span>
+              <span>ML</span>
+            </span>
+            <span className="project-open">EXPLORE PROJECT ↗</span>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className="project project-card"
+          onClick={() =>
+            setSelectedProject({
+              number: "05",
+              title: "Cinema Booking System",
+              category: "FULL-STACK WEB DEVELOPMENT",
+              description:
+                "A cinema booking system developed as a third-year academic project using Python, MySQL and web technologies.",
+              details:
+                "An academic software development project focused on creating a cinema booking application. Python handles the application logic, MySQL provides database storage, and HTML/CSS are used to build the user interface.",
+              role: "Student Developer",
+              tags: ["Python", "MySQL", "HTML", "CSS", "Database"],
+              status: "Academic project",
+            })
+          }
+        >
+          <span className="project-number">05</span>
+          <span className="project-info">
+            <span className="project-category">FULL-STACK WEB DEVELOPMENT</span>
+            <span className="project-title">Cinema Booking System</span>
+            <span className="project-description">
+              A cinema booking application built with Python, MySQL and
+              HTML/CSS as a third-year academic project.
+            </span>
+            <span className="tags">
+              <span>Python</span>
+              <span>MySQL</span>
+              <span>HTML</span>
+              <span>CSS</span>
+            </span>
+            <span className="project-open">EXPLORE PROJECT ↗</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    {selectedProject && (
+      <div
+        className="project-modal-backdrop"
+        onClick={() => setSelectedProject(null)}
+      >
+        <section
+          className="project-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="project-modal-title"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <button
+            type="button"
+            className="project-modal-close"
+            aria-label="Close project details"
+            onClick={() => setSelectedProject(null)}
+          >
+            ×
+          </button>
+
+          <p className="section-label">
+            {selectedProject.number} — PROJECT DETAILS
+          </p>
+
+          <p className="project-modal-category">
+            {selectedProject.category}
+          </p>
+
+          <h2 id="project-modal-title">{selectedProject.title}</h2>
+
+          <p className="project-modal-description">
+            {selectedProject.description}
+          </p>
+
+          <div className="project-modal-divider" />
+
+          <h3>Overview</h3>
+          <p className="project-modal-body">
+            {selectedProject.details}
+          </p>
+
+          <h3>My role</h3>
+          <p className="project-modal-body">{selectedProject.role}</p>
+
+          <h3>Technologies & focus</h3>
+          <div className="tags project-modal-tags">
+            {selectedProject.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <p className="project-modal-status">
+            {selectedProject.status}
+          </p>
+
+          {(selectedProject.number === "01" ||
+            selectedProject.number === "03") && (
+            <p className="project-case-study-note">
+              A detailed case study can be added here as development
+              progresses.
+            </p>
+          )}
+        </section>
+      </div>
+    )}
+
+
+        {/* SKILLS */}
+        <section className="section skills" id="skills">
+          <p className="section-label">04 — SKILLS</p>
+
+          <div className="skills-grid">
+            <div>
+              <h3>Development</h3>
+              <p>Python</p>
+              <p>JavaScript</p>
+              <p>React</p>
+              <p>HTML / CSS</p>
+              <p>SQL</p>
+              <p>Git / GitHub</p>
+            </div>
+
+            <div>
+              <h3>AI & Data</h3>
+              <p>Machine Learning</p>
+              <p>Scikit-learn</p>
+              <p>Data Analysis</p>
+              <p>AI Applications</p>
+              <p>Predictive Modelling</p>
+            </div>
+
+            <div>
+              <h3>Currently Exploring</h3>
+              <p>FastAPI</p>
+              <p>Backend Development</p>
+              <p>Cloud Deployment</p>
+              <p>AI Engineering</p>
+              <p>System Design</p>
+            </div>
+          </div>
+        </section>
+
+        {/* EXPERIENCE */}
+        <section className="section experience" id="experience">
+          <p className="section-label">05 — EXPERIENCE</p>
+
+          <div className="experience-row">
+            <div>
+              <p className="experience-date">2026 — PRESENT</p>
+            </div>
+
+            <div>
+              <h3>BSc (Hons) Artificial Intelligence</h3>
+
+              <p>The British College · Kathmandu</p>
+
+              <p>
+                Developing a foundation across artificial intelligence,
+                software development, algorithms, databases and applied
+                computing.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section className="section contact" id="contact">
+          <p className="section-label">06 — CONTACT</p>
+
+          <h2>
+            Let's build something
+            <span> meaningful.</span>
+          </h2>
+
+          <p>
+            I'm open to internships, graduate opportunities, collaborations
+            and interesting technology projects.
+          </p>
+
+          <a className="contact-link" href="mailto:dhakalaayushma47@gmail.com">
+            dhakalaayushma47@gmail.com →
+          </a>
+        </section>
+      </main>
+
+      <footer>
+        <p>© 2026 Aayushma Dhakal</p>
+        <p>AI · Software · Technology</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
